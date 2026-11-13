@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="An interactive traffic signal optimization project comparing Brute Force, Divide and Conquer, Dynamic Programming, and Greedy algorithms.">
+
+    <title>TrafficFlow | Intelligent Traffic Management</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <header class="navbar">
+        <div class="section-container nav-container">
+
+            <a href="#home" class="logo">
+                <span class="logo-mark">T</span>
+                <span>Traffic<span class="logo-light">Flow</span></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#problem">The Problem</a>
+                <a href="#optimizer">Optimizer</a>
+                <a href="#explorer">Algorithms</a>
+                <a href="#performance">Performance</a>
+            </nav>
+
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"
+                aria-pressed="false">
+                ☾ Dark mode
+            </button>
+
+            <a href="#optimizer" class="nav-button">
+                Try Optimizer <span>↗</span>
+            </a>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- ================= HERO SECTION ================= -->
+
+        <section class="hero" id="home">
+            <div class="section-container hero-layout">
+
+                <div class="hero-content">
+
+                    <div class="eyebrow">
+                        <span class="status-dot"></span>
+                        SMART CITY · ALGORITHM PROJECT
+                    </div>
+
+                    <h1>
+                        Smarter signals.
+                        <span>Better traffic flow.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Explore how different algorithmic techniques can
+                        allocate traffic signal time more intelligently.
+                        Compare four approaches and discover how each one
+                        solves the same optimization problem.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#optimizer" class="primary-button">
+                            Start optimizing <span>→</span>
+                        </a>
+
+                        <a href="#problem" class="secondary-button">
+                            Explore the problem
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+
+                        <div class="hero-stat">
+                            <strong>04</strong>
+                            <span>Algorithms</span>
+                        </div>
+
+                        <div class="hero-stat-divider"></div>
+
+                        <div class="hero-stat">
+                            <strong>01</strong>
+                            <span>Shared problem</span>
+                        </div>
+
+                        <div class="hero-stat-divider"></div>
+
+                        <div class="hero-stat">
+                            <strong>∞</strong>
+                            <span>Possibilities</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+                    <img src="assets/images/hero-traffic.jpg" alt="Aerial view of a busy city traffic intersection">
+
+                    <div class="image-label">
+                        <span class="label-dot"></span>
+                        Urban traffic simulation
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= PROBLEM SECTION ================= -->
+
+        <section class="problem-section section-padding" id="problem">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">01 / UNDERSTANDING THE CHALLENGE</span>
+
+                    <h2>
+                        The problem behind
+                        <span>the traffic.</span>
+                    </h2>
+
+                    <p>
+                        Traffic signals must divide limited green-light time
+                        between roads with different traffic demands.
+                    </p>
+                </div>
+
+
+                <div class="problem-grid">
+
+                    <div class="problem-image">
+                        <img src="assets/images/traffic-signal.jpg" alt="Urban traffic signal at a road intersection">
+
+                        <div class="image-caption">
+                            Every second of green time matters.
+                        </div>
+                    </div>
+
+
+                    <div class="problem-content">
+
+                        <div class="problem-item">
+                            <span class="number">01</span>
+
+                            <div>
+                                <h3>What is the problem?</h3>
+
+                                <p>
+                                    Different roads have different numbers
+                                    of waiting vehicles. However, the total
+                                    available green-light time is limited.
+                                    We need to decide how to distribute that
+                                    time among the roads.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="problem-item">
+                            <span class="number">02</span>
+
+                            <div>
+                                <h3>Why does it matter?</h3>
+
+                                <p>
+                                    Poor allocation of signal time can leave
+                                    some roads waiting longer than necessary.
+                                    A better allocation can help serve more
+                                    vehicles within the available time.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="problem-item">
+                            <span class="number">03</span>
+
+                            <div>
+                                <h3>What does our program calculate?</h3>
+
+                                <p>
+                                    It compares four algorithmic approaches
+                                    to find or estimate a green-time allocation
+                                    that serves as many vehicles as possible
+                                    within a fixed time budget.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="simulation-note">
+                    <strong>Project scope:</strong>
+                    This is an educational simulation using sample traffic
+                    data. It does not control real traffic signals or use
+                    live traffic information.
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= OPTIMIZER SECTION ================= -->
+
+        <section class="optimizer-section section-padding" id="optimizer">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">02 / INTERACTIVE SIMULATION</span>
+
+                    <h2>
+                        Configure your
+                        <span>traffic scenario.</span>
+                    </h2>
+
+                    <p>
+                        Set the available green-light time and traffic
+                        conditions. All four algorithms will receive
+                        the same generated scenario.
+                    </p>
+                </div>
+
+
+                <div class="optimizer-layout">
+
+                    <!-- INPUT FORM -->
+
+                    <div class="input-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <span class="small-label">SIMULATION INPUT</span>
+                                <h3>Scenario settings</h3>
+                            </div>
+
+                            <span class="card-icon">↗</span>
+                        </div>
+
+
+                        <form id="trafficForm" novalidate>
+
+                            <div class="form-group">
+
+                                <label for="greenBudget">
+                                    Total green-time budget
+                                </label>
+
+                                <div class="input-with-unit">
+                                    <input type="number" id="greenBudget" name="greenBudget" min="1" max="600"
+                                        value="60" required>
+
+                                    <span>seconds</span>
+                                </div>
+
+                                <small>
+                                    Total time available for all selected roads.
+                                    Enter a value from 1 to 600.
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="approachCount">
+                                    Number of roads
+                                </label>
+
+                                <select id="approachCount" name="approachCount">
+                                    <option value="2">2 roads</option>
+                                    <option value="3" selected>3 roads</option>
+                                    <option value="4">4 roads</option>
+                                </select>
+
+                                <small>
+                                    Choose how many road approaches to simulate.
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="demandLevel">
+                                    Traffic demand
+                                </label>
+
+                                <select id="demandLevel" name="demandLevel">
+                                    <option value="low">Low traffic</option>
+                                    <option value="medium" selected>
+                                        Medium traffic
+                                    </option>
+                                    <option value="high">High traffic</option>
+                                </select>
+
+                                <small>
+                                    Controls the sample number of waiting vehicles.
+                                </small>
+
+                            </div>
+
+
+                            <p class="error-message" id="signalError" role="alert" aria-live="polite"></p>
+
+
+                            <button type="submit" class="primary-button full-button">
+                                Run all four algorithms <span>→</span>
+                            </button>
+
+                            <p class="form-note">
+                                The same scenario is used for every algorithm
+                                to make the comparison fair.
+                            </p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- VISUAL IMAGE -->
+
+                    <div class="optimizer-visual">
+
+                        <img src="assets/images/control-center.jpg" alt="Traffic management control center">
+
+                        <div class="visual-overlay">
+
+                            <span class="small-label">THE OBJECTIVE</span>
+
+                            <h3>
+                                Maximize vehicles served
+                                within the available time.
+                            </h3>
+
+                            <p>
+                                Compare different strategies and understand
+                                how they make decisions.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= ALGORITHM EXPLORER ================= -->
+
+        <section class="explorer-section section-padding" id="explorer">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">03 / ALGORITHM EXPLORER</span>
+
+                    <h2>
+                        Four approaches.
+                        <span>One challenge.</span>
+                    </h2>
+
+                    <p>
+                        Select an algorithm to understand its working steps,
+                        complexity, and result for your traffic scenario.
+                    </p>
+                </div>
+
+
+                <!-- ALGORITHM SELECTION CARDS -->
+
+                <div class="algorithm-grid">
+
+                    <button type="button" class="algorithm-card active" data-algorithm="bruteforce">
+
+                        <img src="assets/images/brute-force.jpg" alt="Visual representing exhaustive search">
+
+                        <div class="algorithm-card-content">
+                            <span class="algorithm-number">01</span>
+                            <h3>Brute Force</h3>
+                            <p>Checks possible combinations.</p>
+                            <span class="algorithm-link">
+                                Explore method ↗
+                            </span>
+                        </div>
+
+                    </button>
+
+
+                    <button type="button" class="algorithm-card" data-algorithm="divide">
+
+                        <img src="assets/images/divide-conquer.jpg" alt="Visual representing divide and conquer">
+
+                        <div class="algorithm-card-content">
+                            <span class="algorithm-number">02</span>
+                            <h3>Divide &amp; Conquer</h3>
+                            <p>Splits the problem into parts.</p>
+                            <span class="algorithm-link">
+                                Explore method ↗
+                            </span>
+                        </div>
+
+                    </button>
+
+
+                    <button type="button" class="algorithm-card" data-algorithm="dp">
+
+                        <img src="assets/images/dynamic-programming.jpg" alt="Visual representing dynamic programming">
+
+                        <div class="algorithm-card-content">
+                            <span class="algorithm-number">03</span>
+                            <h3>Dynamic Programming</h3>
+                            <p>Stores and reuses subproblem results.</p>
+                            <span class="algorithm-link">
+                                Explore method ↗
+                            </span>
+                        </div>
+
+                    </button>
+
+
+                    <button type="button" class="algorithm-card" data-algorithm="greedy">
+
+                        <img src="assets/images/greedy.jpg" alt="Visual representing strategic greedy choices">
+
+                        <div class="algorithm-card-content">
+                            <span class="algorithm-number">04</span>
+                            <h3>Greedy</h3>
+                            <p>Makes locally beneficial choices.</p>
+                            <span class="algorithm-link">
+                                Explore method ↗
+                            </span>
+                        </div>
+
+                    </button>
+
+                </div>
+
+
+                <!-- SELECTED ALGORITHM DETAILS -->
+
+                <div class="algorithm-detail" id="algorithmDetail">
+
+                    <div class="detail-header">
+
+                        <div>
+                            <span class="small-label" id="algorithmNumber">
+                                ALGORITHM 01
+                            </span>
+
+                            <h3 id="algorithmTitle">
+                                Brute Force
+                            </h3>
+
+                            <p id="algorithmDescription">
+                                Explore every valid combination of green-time
+                                allocations and choose the best result.
+                            </p>
+                        </div>
+
+                        <span class="detail-badge" id="algorithmBadge">
+                            Exhaustive search
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail-grid">
+
+                        <!-- WORKING STEPS -->
+
+                        <div class="detail-explanation">
+
+                            <h4>How it works</h4>
+
+                            <ol id="algorithmSteps">
+                                <li>
+                                    Generate possible green-time allocations.
+                                </li>
+                                <li>
+                                    Check whether each allocation fits the
+                                    available time.
+                                </li>
+                                <li>
+                                    Calculate how many vehicles each valid
+                                    allocation can serve.
+                                </li>
+                                <li>
+                                    Select the allocation that serves the
+                                    maximum number of vehicles.
+                                </li>
+                            </ol>
+
+                        </div>
+
+
+                        <!-- COMPLEXITY -->
+
+                        <div class="complexity-card">
+
+                            <h4>Complexity analysis</h4>
+
+                            <div class="complexity-item">
+                                <span>Time complexity</span>
+                                <strong id="timeComplexity">—</strong>
+                            </div>
+
+                            <div class="complexity-item">
+                                <span>Space complexity</span>
+                                <strong id="spaceComplexity">—</strong>
+                            </div>
+
+                            <p id="complexityExplanation">
+                                Complexity describes how resource usage
+                                grows as the input size increases.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESULT -->
+
+                    <div class="algorithm-result">
+
+                        <div class="result-heading">
+                            <div>
+                                <span class="small-label">SIMULATION OUTPUT</span>
+                                <h4>Algorithm result</h4>
+                            </div>
+
+                            <span class="result-status" id="resultStatus">
+                                Awaiting input
+                            </span>
+                        </div>
+
+
+                        <p id="resultMessage">
+                            Configure your scenario above and run the
+                            algorithms to see the result here.
+                        </p>
+
+
+                        <div class="allocation-result" id="allocationResult">
+                            <p class="empty-allocation">
+                                Your road allocation will appear here.
+                            </p>
+                        </div>
+
+
+                        <div class="result-metrics">
+
+                            <div class="result-metric">
+                                <span>Vehicles served</span>
+                                <strong id="resultVehicles">—</strong>
+                            </div>
+
+                            <div class="result-metric">
+                                <span>Green time used</span>
+                                <strong id="resultGreenTime">—</strong>
+                            </div>
+
+                            <div class="result-metric">
+                                <span>Time remaining</span>
+                                <strong id="resultRemaining">—</strong>
+                            </div>
+
+                            <div class="result-metric">
+                                <span>Execution time</span>
+                                <strong id="resultExecution">—</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PERFORMANCE SECTION ================= -->
+
+        <section class="performance-section section-padding" id="performance">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">04 / COMPARATIVE ANALYSIS</span>
+
+                    <h2>
+                        Compare the
+                        <span>performance.</span>
+                    </h2>
+
+                    <p>
+                        Examine how the four approaches perform using
+                        the same traffic scenario.
+                    </p>
+                </div>
+
+
+                <div class="performance-card">
+
+                    <div class="performance-heading">
+
+                        <div>
+                            <h3>Algorithm comparison</h3>
+                            <p>
+                                Execution time measured during the simulation.
+                            </p>
+                        </div>
+
+                        <span class="chart-label">
+                            PERFORMANCE
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-container">
+                        <canvas id="performanceChart" aria-label="Chart comparing algorithm execution times"
+                            role="img"></canvas>
+                    </div>
+
+
+                    <p class="performance-summary" id="performanceSummary" aria-live="polite">
+                        Run the simulation to generate a performance
+                        comparison.
+                    </p>
+
+                    <p class="chart-note">
+                        Execution times can vary between devices and runs.
+                        Small inputs may produce very small timing differences.
+                        The chart is for educational comparison, not a
+                        benchmark of real traffic systems.
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="section-container">
+
+            <div class="footer-content">
+
+                <a href="#home" class="logo footer-logo">
+                    <span class="logo-mark">T</span>
+                    <span>Traffic<span class="logo-light">Flow</span></span>
+                </a>
+
+                <p>
+                    An educational exploration of algorithms
+                    for intelligent traffic signal allocation.
+                </p>
+
+                <div class="footer-right">
+                    <a href="#problem">The problem</a>
+                    <a href="#optimizer">Try simulation</a>
+                    <a href="#explorer">Algorithms</a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+                <span>Algorithm Explorer Web App · 2026</span>
+                <span>Designed for learning and experimentation.</span>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT FILES ================= -->
+
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Four algorithm implementations -->
+    <script src="js/traffic-bruteforce.js"></script>
+    <script src="js/traffic-divide-conquer.js"></script>
+    <script src="js/traffic-dp.js"></script>
+    <script src="js/traffic-greedy.js"></script>
+
+    <!-- Main application logic -->
+    <script src="js/main.js"></script>
+
+    <script>
+        const themeToggle = document.getElementById("themeToggle");
+        const savedTheme = localStorage.getItem("trafficflow-theme") || "light";
+
+        document.documentElement.setAttribute("data-theme", savedTheme);
+
+        function updateThemeButton(theme) {
+            if (theme === "dark") {
+                themeToggle.textContent = "☀ Light mode";
+                themeToggle.setAttribute("aria-label", "Switch to light mode");
+                themeToggle.setAttribute("aria-pressed", "true");
+            } else {
+                themeToggle.textContent = "☾ Dark mode";
+                themeToggle.setAttribute("aria-label", "Switch to dark mode");
+                themeToggle.setAttribute("aria-pressed", "false");
+            }
+        }
+
+        updateThemeButton(savedTheme);
+
+        themeToggle.addEventListener("click", function () {
+            const currentTheme =
+                document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("trafficflow-theme", newTheme);
+            updateThemeButton(newTheme);
+        });
+    </script>
+
+</body>
+
+</html>
