@@ -1,4 +1,4 @@
-# TrafficFlow – Traffic Signal Time Optimization Using Four Algorithms
+# TrafficFlow – Intelligent Traffic Management
 
 ## Project Overview
 
@@ -99,6 +99,4 @@ TrafficFlow provides an interactive way to understand and compare four algorithm
 
 ---
 
-**Project:** TrafficFlow – Traffic Signal Time Optimization Using Four Algorithms  
-**Domain:** Data Structures and Algorithms  
-**Developed by:** Manvitha, Prathyusha, and Surya
+
